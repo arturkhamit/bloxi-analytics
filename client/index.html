@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Bloxi</title>
+  </head>
+  <body class="text">
+    <div class="header flex">
+      <div class="logo-container"><img src="assets/logo.png" /></div>
+      <div class="user-controls flex">
+        <div class="lang-switcher flex">
+          <button class="lang-btn" data-lang="sk">SK</button>
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <div class="slider"></div>
+        </div>
+        <!-- <button class="bx bx-user-circle button button-user"></button> -->
+      </div>
+    </div>
+
+    <div class="welcome-container flex col">
+      <span class="text-bold text-welcome"
+        >Receipts | Analytics | Statistics</span
+      >
+      <a
+        type="button"
+        class="button button-welcome text text-semibold text-center"
+        value="SIGN UP"
+        href="main.html"
+      >JUMP INTO RECEIPT WORLD!</a>
+    </div>
+
+    <div class="shop-container">
+      <div class="logos-container flex">
+        <div class="logos-group flex">
+          <img class="logo" src="assets/firms/kaufland-logo.png" />
+          <img class="logo" src="assets/firms/billa-logo.png" />
+          <img class="logo" src="assets/firms/lidl_logo.png" />
+          <img class="logo" src="assets/firms/fresh-logo.png" />
+          <img class="logo" src="assets/firms/tesco_logo.png" />
+        </div>
+        <div aria-hidden class="logos-group flex">
+          <img class="logo" src="assets/firms/kaufland-logo.png" />
+          <img class="logo" src="assets/firms/billa-logo.png" />
+          <img class="logo" src="assets/firms/lidl_logo.png" />
+          <img class="logo" src="assets/firms/fresh-logo.png" />
+          <img class="logo" src="assets/firms/tesco_logo.png" />
+        </div>
+      </div>
+      <div class="receipts-container flex">
+        <div class="receipts-group flex">
+          <img class="receipt" src="assets/blocek-2.jpg" />
+          <img class="receipt" src="assets/blocek-2.jpg" />
+          <img class="receipt" src="assets/blocek-2.jpg" />
+          <img class="receipt" src="assets/blocek-2.jpg" />
+        </div>
+        <div aria-hidden class="receipts-group flex">
+          <img class="receipt" src="assets/blocek-2.jpg" />
+          <img class="receipt" src="assets/blocek-2.jpg" />
+          <img class="receipt" src="assets/blocek-2.jpg" />
+          <img class="receipt" src="assets/blocek-2.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer text-semibold">Bloxi.sk <br />All rights reserved</div>
+    <script src="js/scripts.js"></script>
+    <script src="js/lang-btn.js"></script>
+  </body>
+</html>

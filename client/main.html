@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"
+    />
+    <link rel="stylesheet" href="./chat.css" />
+
+    <title>Bloxi</title>
+  </head>
+  <body class="text">
+    <div class="header flex">
+      <div class="logo-container"><img src="assets/logo.png" /></div>
+      <div class="user-controls flex">
+        <div class="lang-switcher flex">
+          <button class="lang-btn" data-lang="sk">SK</button>
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <div class="slider"></div>
+        </div>
+        <!-- <button class="bx bx-user-circle button button-user"></button> -->
+        <!-- <span class="user-name"></span> -->
+        <button id="logoutBtn" class="button button-logout">Log out</button>
+      </div>
+    </div>
+
+    <div class="stats-container flex col">
+      <div class="wrap-container flex">
+        <span class="text-bold text-welcome">Statistics</span>
+        <div class="filter-group flex">
+          <div class="dropdown-wrapper">
+            <div class="filter-static">Filter</div>
+
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item" filter-data="day">Last day</a>
+              <a href="#" class="dropdown-item" filter-data="week">Last week</a>
+              <a href="#" class="dropdown-item" filter-data="month"
+                >Last month</a
+              >
+            </div>
+          </div>
+
+          <div class="v-separator"></div>
+          <div class="filter-calendar" id="calendar-trigger">Calendar</div>
+          <input type="text" id="datepicker-input" />
+        </div>
+      </div>
+
+      <div class="cloud-group">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front flex col">
+              <div class="stats-cloud flex col">
+                <span class="stat-title text-secondary text-semibold"
+                  >Shops 🏬</span
+                >
+                <div class="stats-groups" id="shops-stats">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="flip-card-back flex col">
+              <span class="stat-title text-secondary text-semibold"
+                >Shops 🏬</span
+              >
+              <div
+                class="chart-container"
+                style="height: 300px; position: relative; width: auto"
+              >
+                <canvas id="shopsChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="stats-cloud flex col">
+                <span class="stat-title text-secondary text-semibold"
+                  >Products 🛒</span
+                >
+                <div class="stats-groups" id="products-stats">
+                </div>
+              </div>
+            </div>
+            <div class="flip-card-back flex col">
+              <span class="stat-title text-secondary text-semibold"
+                >Products 🛒</span
+              >
+              <div
+                class="chart-container"
+                style="height: 300px; position: relative"
+              >
+                <canvas id="productsChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="stats-cloud flex col">
+                <span class="stat-title text-secondary text-semibold"
+                  >Categories 🏷️</span
+                >
+                <div class="stats-groups" id="categories-stats">
+                </div>
+              </div>
+            </div>
+            <div class="flip-card-back flex col">
+              <span class="stat-title text-secondary text-semibold"
+                >Categories 🏷️</span
+              >
+              <div
+                class="chart-container"
+                style="height: 300px; position: relative"
+              >
+                <canvas id="categoriesChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="receipts-container-main flex col">
+      <span class="text-welcome text-bold">Receipts</span>
+      <div class="receipts-group-main flex text-secondary">
+        <div class="receipt-main-template flex col" style="display: none">
+          <div class="receipt-header flex col">
+            <h2 id="store-name">STORE NAME</h2>
+            <p id="store-address">Address: lorem ipsum 23-10</p>
+          </div>
+
+          <div class="separator-repeating"></div>
+          <p>CASH RECEIPT</p>
+          <div class="separator-repeating"></div>
+
+          <div class="table-scroll-wrapper">
+            <table class="items-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th class="col-qty">Q-ty</th>
+                  <th class="col-total">Sum</th>
+                </tr>
+              </thead>
+              <tbody id="receipt-items"></tbody>
+            </table>
+          </div>
+          <div class="separator-repeating"></div>
+
+          <div class="summary">
+            <div
+              class="summary-line"
+              style="font-weight: bold; font-size: 1.2em"
+            >
+              <span>TOTAL:</span>
+              <span id="receipt-total">0.00</span>
+            </div>
+            <div class="summary-line">
+              <span>Interim summary:</span>
+              <span id="receipt-subtotal">0.00</span>
+            </div>
+            <div class="summary-line">
+              <span>Tax (VAT):</span>
+              <span id="receipt-tax">0.00</span>
+            </div>
+          </div>
+          <div class="separator-repeating"></div>
+          <footer class="receipt-footer">
+            <p>THANK YOU!</p>
+          </footer>
+        </div>
+      </div>
+      <div class="modal-background"></div>
+      <div class="modal flex col text-secondary"></div>
+    </div>
+
+    <div class="ai-fab">
+      <button class="chatbot-trigger" aria-label="Ask AI">
+        <span class="ai-label">Question for AI</span>
+        <span class="chatbot-trigger-icon">
+          <img src="./assets/loop-icon.svg" alt="" />
+        </span>
+      </button>
+
+      <!-- плюсик, який показується при hover -->
+      <button class="ai-add-btn" aria-label="Add file for AI">
+        <i class="bx bx-plus"></i>
+      </button>
+    </div>
+
+    <!-- Chatbot modal -->
+    <div class="chatbot-modal" id="chatbotModal" aria-hidden="true">
+      <div class="chatbot-modal__backdrop"></div>
+
+      <div class="chatbot-modal__content">
+        <!-- TOPBAR: Bloxi зліва, Clear + X справа -->
+        <div class="chatbot-topbar">
+          <div class="chatbot-brand">
+            <span class="chatbot-brand__check">✔</span>
+            <span class="chatbot-brand__name">Bloxi</span>
+          </div>
+
+          <div class="chatbot-topbar-actions">
+            <button class="chatbot-clear" id="chatbotClearBtn">
+              <i class="bx bx-trash"></i>
+              <span class="text-semimedium">Clear chat</span>
+            </button>
+
+            <button
+              class="chatbot-close"
+              id="chatbotCloseBtn"
+              aria-label="Close"
+            >
+              <img src="assets/cross-icon.svg" alt="Close" />
+            </button>
+          </div>
+        </div>
+
+        <div class="chatbot-body" id="chatbotMessages"></div>
+
+        <!-- інпут знизу -->
+        <form class="chatbot-input-row" id="chatbotForm">
+          <input
+            type="text"
+            id="chatbotInput"
+            placeholder="Enter your prompt..."
+            autocomplete="off"
+          />
+          <button type="submit" class="chatbot-send">
+            <i class="bx bx-send"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Upload modal -->
+    <div class="upload-modal" id="uploadModal" aria-hidden="true">
+      <div class="upload-modal__backdrop"></div>
+
+      <div class="upload-modal__content">
+        <div class="upload-modal__topbar">
+          <div class="upload-modal__brand">
+            <span class="upload-brand-check">✔</span>
+            <span>Bloxi</span>
+          </div>
+
+          <button
+            class="upload-modal__close"
+            id="uploadCloseBtn"
+            aria-label="Close"
+          >
+            <img src="./assets/cross-icon.svg" alt="Close" />
+          </button>
+        </div>
+
+        <div class="upload-modal__body">
+          <div class="upload-dropzone">
+            <!-- просто квадрат, сюди потім можна додати drag & drop -->
+          </div>
+
+          <button class="upload-btn" id="uploadLocalBtn">Add lokal file</button>
+
+          <input type="file" id="uploadInput" hidden />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer text-semibold">Bloxi.sk <br />All rights reserved</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/lang-btn.js"></script>
+    <script src="js/flipper.js"></script>
+    <script src="js/dropdown.js" type="module"></script>
+    <script src="js/calendar.js" type="module" defer></script>
+    <script src="js/receipts.js" type="module"></script>
+    <script src="js/fill-statisticts.js" type="module"></script>
+    <script src="js/fill-data.js" type="module"></script>
+    <script src="./js/chat.js" type="module"></script>
+    <script src="./js/update.js"></script>
+    <!-- <script>
+    (function () {
+      const raw =
+        sessionStorage.getItem("currentUser") ||
+        localStorage.getItem("currentUser");
+
+      if (!raw) {
+        window.location.href = "login-page.html";
+        return;
+      }
+
+      let user;
+      try {
+        user = JSON.parse(raw);
+      } catch (e) {
+        console.error("error currentUser, clean data", e);
+        sessionStorage.removeItem("currentUser");
+        localStorage.removeItem("currentUser");
+        window.location.href = "login-page.html";
+        return;
+      }
+
+      const userNameEl = document.querySelector(".user-name");
+      if (userNameEl) {
+        userNameEl.textContent = user.login || user.email;
+      }
+
+      const userBtn = document.querySelector(".button-user");
+      if (userBtn) {
+        userBtn.title = user.login || user.email;
+      }
+    })();
+  </script> -->
+
+    <!-- <script>
+    (function () {
+      const raw = localStorage.getItem("user");
+
+      let user;
+      try {
+        user = JSON.parse(raw);
+      } catch (e) {
+        sessionStorage.removeItem("currentUser");
+        localStorage.removeItem("currentUser");
+        window.location.href = "login-page.html";
+        return;
+      }
+
+      const userNameEl = document.querySelector(".user-name");
+      if (userNameEl) {
+        userNameEl.textContent = user.login || user.email;
+      }
+
+      const userBtn = document.querySelector(".button-user");
+      if (userBtn) {
+        userBtn.title = user.login || user.email;
+      }
+
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          sessionStorage.removeItem("currentUser");
+          localStorage.removeItem("currentUser");
+
+          window.location.href = "login-page.html";
+        });
+      }
+    })();
+  </script> -->
+  </body>
+</html>

@@ -1,0 +1,22 @@
+
+
+# Core (used by ai/src/)
+requests>=2.31.0
+jsonschema>=4.21.0
+
+# If you validate/format data with Pydantic elsewhere (optional for ai/)
+pydantic>=2.7.0
+
+# --- Pick ONE Postgres driver for the backend ---
+# Synchronous option:
+psycopg[binary]>=3.1.18
+# OR Async option (comment out psycopg if you pick this):
+# asyncpg>=0.29.0
+
+# If you’ll expose an API from the backend (FastAPI)
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# Useful but optional
+python-dotenv>=1.0.1
+typing-extensions>=4.10.0

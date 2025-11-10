@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="page text">
+      <a href="index.html" class="back">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+        Back
+      </a>
+
+      <section class="auth" data-mode="login">
+        <div class="tabs">
+          <a href="#" data-tab="login" class="active">Log In</a>
+          <a href="#" data-tab="signup" class="dim">Sign Up</a>
+        </div>
+
+        <form action="#" method="post" novalidate>
+          <div class="field field-username">
+            <label class="label-form" for="username">Login</label>
+            <input
+              id="username"
+              class="input"
+              type="text"
+              placeholder="Login"
+            />
+          </div>
+
+          <div class="field field-email">
+            <label class="label-form email-field" for="email"
+              >Email address or your login</label
+            >
+            <input
+              id="email"
+              class="input"
+              type="email"
+              placeholder="myemail@gmail.com"
+              required
+            />
+            <span class="right-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
+          </div>
+
+          <div class="field">
+            <label class="label-form" for="password">Password</label>
+            <input
+              id="password"
+              class="input"
+              type="password"
+              placeholder="••••••••"
+              required
+            />
+            <button class="right-icon" type="button" id="togglePass">
+              <svg
+                id="eye"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="field">
+            <button type="submit" class="button button-welcome button-submit">
+              Log In
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script src="./js/login.js"></script>
+  </body>
+</html>

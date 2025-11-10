@@ -1,0 +1,258 @@
+.page {
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.back {
+    position: fixed;
+    top: calc(24px + env(safe-area-inset-top));
+    left: calc(24px + env(safe-area-inset-left));
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    opacity: .8;
+    z-index: 1000;
+}
+.back svg {
+    width: 22px;
+    height: 22px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.tabs a {
+    font-size: 32px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+.tabs a.dim {
+    color: var(--additional-color);
+}
+
+
+.tabs a {
+    cursor: pointer;
+    transition: color .25s ease, text-shadow .25s ease;
+}
+
+.tabs a.dim:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(110, 167, 255, 0.6);
+}
+
+.tabs a.active:hover {
+    color: var(--primary-color); 
+    text-shadow: 0 0 12px rgba(110, 167, 255, 0.8);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     
+    gap: 24px;               
+    text-align: left;        
+}
+
+.field {
+    width: 360px;            
+    position: relative;
+}
+
+.field-username {
+    width: 360px;
+    position: relative;
+
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    transition: max-height .35s ease, opacity .35s ease, margin .35s ease;
+}
+
+.field-email .right-icon {
+    opacity: 0;
+    transform: scale(0.7);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.field-email.has-value .right-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.auth {
+    width: 100%;
+    max-width: 450px;
+    max-height: 570px;
+    padding: 45px 28px;      
+    text-align: center;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.auth[data-mode="signup"] .field-username {
+    max-height: 80px;  
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.label-form {
+    display: block;
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.input {
+    width: 100%;
+    height: 52px;            
+    border-radius: 10px;
+    border: 1px solid #E3E6EE;
+    background: var(--input);
+    padding: 0 52px 0 16px;  
+    outline: none;
+    font-size: 14px;
+    transition: box-shadow .2s, border-color .2s;
+}
+.input:focus {
+    border-color: #C8D4FF;
+    box-shadow: 0 0 0 4px rgba(58, 134, 255, .15);
+}
+
+.right-icon {
+    position: absolute;
+    right: 16px;
+
+    top: 30px;
+    bottom: 0;
+    margin: auto 0;         
+
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+.right-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.link {
+    width: 360px;
+    font-weight: 600;
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--primary-color);
+    text-decoration: none;
+    text-align: left;
+}
+
+.button-submit {
+    width: 100%;             
+    margin-top: 16px;
+}
+
+
+/* ------------ Media Request ---------- */
+
+
+@media (max-width: 1024px) {
+    .page {
+        padding: 60px 24px;
+    }
+
+    .auth {
+        margin-top: 24px;
+    }
+
+    .button-welcome.submit {
+        max-width: 480px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        min-height: 100vh;
+        align-items: flex-start;
+        padding: 24px 16px 40px;
+    }
+
+    .back {
+        top: 16px;
+        left: 16px;
+        font-size: 14px;
+    }
+
+    .auth {
+        width: 100%;
+        max-width: 420px;
+        margin: 80px auto 0;
+    }
+
+    .avatar {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 16px;
+    }
+
+    .tabs {
+        justify-content: center;
+        gap: 16px;
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .field,
+    .field-username,
+    .field-email {
+        width: 100%;
+    }
+
+    .input {
+        font-size: 15px;
+    }
+
+    .label-form {
+        font-size: 13px;
+    }
+
+    .link {
+        width: 100%;
+        text-align: left;
+    }
+
+    .button-welcome.submit {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .form-row {
+        width: 100%;
+        margin-top: 12px;
+    }
+}
