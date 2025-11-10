@@ -1,6 +1,6 @@
 async function fetchData(filter = {}) {
   //192.168.137.224
-  const localhost = "http://localhost:8001";
+  const localhost = "http://192.168.2.3:8001";
   if (filter.dateFrom && filter.dateTo) {
     console.log("Fetching data with filter:", filter.dateFrom, filter.dateTo);
     var qr = `/receipts/?start_date=${filter.dateFrom}&end_date=${filter.dateTo}`;
@@ -15,7 +15,7 @@ async function fetchData(filter = {}) {
   }
   if (filter.default) {
     console.log("Fetching default data");
-    var qr = `/receipts/5`;
+    var qr = `/receipts/10`;
   }
   const apiUrl = `${localhost}${qr}`;
 
