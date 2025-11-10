@@ -28,7 +28,7 @@
 `sudo apt-get update`
 
 
-* checks if docker is running
+* check if docker is running
 
 `sudo systemctl status docker`
 
@@ -37,18 +37,7 @@
 `sudo systemctl start docker`
 
 
-### 2. Install ollama and llama3b-8:
-* install ollama
-
-`sudo docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama`
-
-
-* run llama-3:8b on an image
-
-`sudo docker exec ollama ollama run llama3:8b`
-
-
-### 3. Download postgresql, create database and load ready-to-go sql dump
+### 2. Download postgresql, create database and load ready-to-go sql dump
 * Add postgresql's GPG key
 
 `wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
@@ -61,22 +50,10 @@
 `sudo apt update`
 
 
-* Creating database
-
-`sudo -i -u postgres`
-
-`createdb erste_2025`
-
-`exit`
+* Ask repository creator for a DB
 
 
-* Loading sql dump into a database
-
-`psql -U postgres -d erste_2025 < injection.sql`
-
-
-
-### 4. Create virtual python environment and install requirements
+### 3. Create virtual python environment and install requirements
 * create virtual env
 
 `python3 -m venv env`
@@ -91,8 +68,16 @@
 
 `pip install -r requirements.txt`
 
-### 5. Add secret Django secret key to your project
+### 4. Add secret Django secret key to your project
 * ask someone in charge for backend for this key
 
-## And only after that you will be able to run backend successfully with command `python manage.py runserver 8000`
-* FastAPI works on port 8001
+## Only after that you will be able to run backend successfully with command (you have to be in server/src_django directory)
+`python manage.py runserver`
+
+## running FastAPI (you have to be in server/ directory):
+`uvicorn main:app --reload --host 0.0.0.0 --port 8001`
+
+
+
+# HOW TO RUN AI
+## TODO
