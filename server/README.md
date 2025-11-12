@@ -37,7 +37,7 @@
 `sudo systemctl start docker`
 
 
-### 2. Download postgresql, create database and load ready-to-go sql dump
+### 2. Download postgresql and create database
 * Add postgresql's GPG key
 
 `wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
